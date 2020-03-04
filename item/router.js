@@ -1,11 +1,13 @@
 const { Router } = require("express");
 const Sequelize = require("sequelize");
+const Item = require("./model");
 // const auth = require("../auth/middleware");
 
 const router = new Router();
 
 //create event
-router.post("/events", auth, async (request, response, next) => {
+//need auth
+router.post("/events", async (request, response, next) => {
   console.log("create event", request.body);
   try {
     const newEvent = await Event.create(request.body);
