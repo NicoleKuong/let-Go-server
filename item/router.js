@@ -7,11 +7,11 @@ const router = new Router();
 
 //create event
 //need auth
-router.post("/events", async (request, response, next) => {
-  console.log("create event", request.body);
+router.post("/items", async (request, response, next) => {
+  console.log("create item ", request.body);
   try {
-    const newEvent = await Event.create(request.body);
-    response.send(newEvent);
+    const newItem = await Item.create(request.body);
+    response.send(newItem);
   } catch (error) {
     next(error);
   }
