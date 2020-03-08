@@ -12,7 +12,6 @@ router.post("/items", async (request, response, next) => {
   console.log("create item ", request.body);
   try {
     const newItem = await Item.create(request.body);
-
     response.send(newItem);
   } catch (error) {
     next(error);
@@ -37,16 +36,12 @@ router.get("/items", async (request, response, next) => {
 //create imageUrl for that particular item
 
 router.post("/items/:itemId/images", async (request, response, next) => {
-  console.log("===========!!!!", request.body.imageUrl.imageUrl);
   try {
-    const links = request.body.imageUrl.imageUrl.flat();
-    console.log("!!!!!", links);
+    const links = request.body.imageUrl.imageUrl;
+    const itemID = request.body.imageUrl.itemId;
+
     links.map(async link => {
-      console.log("????", link);
-      const newImage = await Image.create(
-        // itemId: request.params.itemId,
-        { imageUrl: link }
-      );
+      const newImage = await Image.create({ imageUrl: link, itemId: itemID });
       response.send(newImage);
     });
   } catch (error) {
