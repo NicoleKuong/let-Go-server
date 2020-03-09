@@ -34,7 +34,12 @@ router.post("/login", (request, response) => {
           response.send({
             jwt: toJWT({ userId: entity.id }),
             userId: entity.id,
-            username: entity.username
+            username: entity.username,
+            firstName: entity.firstName,
+            lastName: entity.lastName,
+            city: entity.city,
+            latitude: entity.latitude,
+            longitude: entity.longitude
           });
         } else {
           response.status(400).send({
