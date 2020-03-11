@@ -37,6 +37,8 @@ router.post("/login", (request, response) => {
             username: entity.username,
             firstName: entity.firstName,
             lastName: entity.lastName,
+            streetName: entity.streetName,
+            houseNumber: entity.houseNumber,
             city: entity.city,
             latitude: entity.latitude,
             longitude: entity.longitude
