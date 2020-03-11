@@ -4,6 +4,7 @@ const port = process.env.PORT || 4000;
 const userRouter = require("./user/router");
 const authRouter = require("./auth/router");
 const itemRouter = require("./item/router");
+const emailRouter = require("./email/router");
 
 const bodyParser = require("body-parser");
 
@@ -18,6 +19,7 @@ app.use(parserMiddleware);
 app.use(userRouter);
 app.use(authRouter);
 app.use(itemRouter);
+app.use(emailRouter);
 
 app.get("/", (request, response, next) => {
   response.send("hello world");
