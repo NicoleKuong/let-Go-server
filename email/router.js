@@ -23,7 +23,7 @@ router.post("/sendMail", async (request, response, next) => {
       text: `${message}`
     };
 
-    console.log("mailOptions", mailOptions);
+    // console.log("mailOptions", mailOptions);
 
     transporter.sendMail(mailOptions, function(error, data) {
       if (error) {
