@@ -8,8 +8,8 @@ const router = new Router();
 
 // define endpoints here
 router.post("/login", (request, response) => {
-  const email = request.body.email;
-  const password = request.body.password;
+  const { email, password } = request.body;
+
   if (!email || !password) {
     response.status(400).send({
       message: "Please supply a valid email and password"
@@ -33,15 +33,16 @@ router.post("/login", (request, response) => {
           // 3. if the password is correct, return a JWT with the userId of the user (user.id)
           response.send({
             jwt: toJWT({ userId: entity.id }),
-            userId: entity.id,
-            username: entity.username,
-            firstName: entity.firstName,
-            lastName: entity.lastName,
-            streetName: entity.streetName,
-            houseNumber: entity.houseNumber,
-            city: entity.city,
-            latitude: entity.latitude,
-            longitude: entity.longitude
+            // userId: entity.id,
+            // username: entity.username,
+            // firstName: entity.firstName,
+            // lastName: entity.lastName,
+            // streetName: entity.streetName,
+            // houseNumber: entity.houseNumber,
+            // city: entity.city,
+            // latitude: entity.latitude,
+            // longitude: entity.longitude
+            user: entity
           });
         } else {
           response.status(400).send({
@@ -58,10 +59,4 @@ router.post("/login", (request, response) => {
   }
 });
 
-// to test: http :4000/secret-endpoint "Authorization":"Bearer <jwt-token>"
-// router.get("/secret-endpoint", auth, (req, res) => {
-//   res.send({
-//     message: `Thanks for visiting the secret endpoint ${req.user.email}.`
-//   });
-// });
 module.exports = router;
