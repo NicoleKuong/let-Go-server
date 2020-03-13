@@ -10,7 +10,7 @@ const router = new Router();
 //create item and images
 //need auth
 router.post("/items", async (request, response, next) => {
-  // console.log("create item ", request.body);
+  console.log("create item ", request.body);
   try {
     const imageUrls = request.body.imageUrls;
     const newItem = await Item.create(request.body);
