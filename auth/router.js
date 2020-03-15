@@ -42,6 +42,7 @@ router.post("/login", (request, response) => {
             city: entity.city,
             latitude: entity.latitude,
             longitude: entity.longitude
+            // user: entity
           });
         } else {
           response.status(400).send({
