@@ -33,16 +33,16 @@ router.post("/login", (request, response) => {
           // 3. if the password is correct, return a JWT with the userId of the user (user.id)
           response.send({
             jwt: toJWT({ userId: entity.id }),
-            userId: entity.id,
-            username: entity.username,
-            firstName: entity.firstName,
-            lastName: entity.lastName,
-            streetName: entity.streetName,
-            houseNumber: entity.houseNumber,
-            city: entity.city,
-            latitude: entity.latitude,
-            longitude: entity.longitude
-            // user: entity
+            // userId: entity.id,
+            // username: entity.username,
+            // firstName: entity.firstName,
+            // lastName: entity.lastName,
+            // streetName: entity.streetName,
+            // houseNumber: entity.houseNumber,
+            // city: entity.city,
+            // latitude: entity.latitude,
+            // longitude: entity.longitude
+            user: entity
           });
         } else {
           response.status(400).send({
