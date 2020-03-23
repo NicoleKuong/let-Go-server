@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const router = new Router();
 
 router.post("/sendMail", async (request, response, next) => {
-  // console.log("send email???", request.body);
+  // console.log("send email?", request.body);
   const { name, message, ownerEmail } = request.body;
   try {
     let transporter = nodemailer.createTransport({
