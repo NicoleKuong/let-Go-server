@@ -72,36 +72,4 @@ router.get("/items/find/:keyword", async (request, response, next) => {
   }
 });
 
-//create imageUrl for that particular item
-
-// router.post("/items/:itemId/images", async (request, response, next) => {
-//   try {
-//     const links = request.body.imageUrl.imageUrl;
-//     // console.log("=====", links);
-//     const itemID = request.body.imageUrl.itemId;
-
-//     links.map(async link => {
-//       const newImage = await Image.create({ imageUrl: link, itemId: itemID });
-//       // console.log("++++++", newImage);
-//       response.send(newImage);
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-// //get images for one particular item
-// router.get("/items/:itemId/images", async (request, response) => {
-//   console.log("!!!!!!", request.body);
-//   try {
-//     const Images = await Image.findAll({
-//       where: { itemId: request.params.itemId },
-//       include: [{ model: User }, { model: Item }]
-//     });
-//     response.send(Images);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 module.exports = router;
