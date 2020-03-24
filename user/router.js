@@ -7,7 +7,7 @@ const router = new Router();
 
 //user signup
 router.post("/user", async (request, response) => {
-  console.log("create user", request.body);
+  // console.log("create user", request.body);
   if (!request.body.email || !request.body.password) {
     return response
       .status(400)
@@ -25,7 +25,7 @@ router.post("/user", async (request, response) => {
     response.status(201).send("User created");
   } catch (error) {
     //user email address not unique
-    console.log(error.name);
+    // console.log(error.name);
     switch (error.name) {
       case "SequelizeUniqueConstraintError": //in-built sequelize error
         return response.status(400).send({ message: error.errors[0].message });

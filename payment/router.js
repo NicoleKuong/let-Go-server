@@ -9,8 +9,8 @@ const { v4: uuidv4 } = require("uuid");
 const router = new Router();
 
 router.post("/payment", async (request, response, next) => {
-  console.log("product++", request.body);
-  console.log("price ---", request.body.price);
+  // console.log("product++", request.body);
+  // console.log("price ---", request.body.price);
 
   let error;
   let status;
