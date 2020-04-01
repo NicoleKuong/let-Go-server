@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const nodemailer = require("nodemailer");
+const auth = require("../auth/middleware");
 
 const router = new Router();
 
-router.post("/sendMail", async (request, response, next) => {
+router.post("/sendMail", auth, async (request, response, next) => {
   // console.log("send email?", request.body);
   const { name, message, ownerEmail } = request.body;
   try {

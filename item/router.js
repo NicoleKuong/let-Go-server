@@ -3,13 +3,13 @@ const User = require("../user/model");
 const Item = require("./model");
 const Image = require("../image/model");
 const { Op } = require("sequelize");
-// const auth = require("../auth/middleware");
+const auth = require("../auth/middleware");
 
 const router = new Router();
 
 //create item and images
 //need auth
-router.post("/items", async (request, response, next) => {
+router.post("/items", auth, async (request, response, next) => {
   console.log("create item ", request.body);
   try {
     const imageUrls = request.body.imageUrls;
