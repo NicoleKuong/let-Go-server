@@ -15,15 +15,15 @@ router.post("/items", auth, async (request, response, next) => {
     const imageUrls = request.body.imageUrls;
     const newItem = await Item.create(request.body);
     await Promise.all(
-      imageUrls.map(async link => {
+      imageUrls.map(async (link) => {
         await Image.create({
           imageUrl: link,
-          itemId: newItem.id
+          itemId: newItem.id,
         });
       })
     );
     const newItemWithImages = await Item.findByPk(newItem.id, {
-      include: [{ model: Image }, { model: User }]
+      include: [{ model: Image }, { model: User }],
     });
     response.send(newItemWithImages);
   } catch (error) {
@@ -35,10 +35,10 @@ router.post("/items", auth, async (request, response, next) => {
 router.get("/items", async (request, response, next) => {
   try {
     const items = await Item.findAll({
-      include: [{ model: User }, { model: Image }]
+      include: [{ model: User }, { model: Image }],
     });
     response.send(items);
-    // console.log("items !!!", items);
+    console.log("items !!!", items);
   } catch (error) {
     next(error);
   }
@@ -50,15 +50,15 @@ router.get("/items/find/:keyword", async (request, response, next) => {
   try {
     //find the users with the keyword location
     const users = await User.findAll({
-      where: { city: { [Op.iLike]: `%${keyword}%` } }
+      where: { city: { [Op.iLike]: `%${keyword}%` } },
     });
 
     //map through the user's id (result an array) to match in the item table's userId
-    const userIds = users.map(user => user.dataValues.id);
-    // console.log("an array of userIDs", userIds);
+    const userIds = users.map((user) => user.dataValues.id);
+    console.log("an array of userIDs", userIds);
     const itemsWithCity = await Item.findAll({
       where: { userId: userIds },
-      include: [{ model: Image }, { model: User }]
+      include: [{ model: Image }, { model: User }],
     });
     if (!itemsWithCity.length > 0) {
       response
