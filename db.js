@@ -10,7 +10,7 @@ const dataBaseURL =
 console.log("process.env.DATABASE_URL", dataBaseURL);
 const db = new Sequelize(dataBaseURL);
 
-db.sync({ force: false })
+db.sync({ force: true })
   .then(() => console.log("Database connected"))
   .catch(console.error);
 
